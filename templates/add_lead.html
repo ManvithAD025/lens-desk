@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card p-4">
+      <h3 class="mb-4"><i class="bi bi-person-plus"></i> New Enquiry</h3>
+
+      <form method="POST">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Name *</label>
+            <input name="name" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input name="email" type="email" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Phone</label>
+            <input name="phone" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Event Date</label>
+            <input name="event_date" type="date" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Venue</label>
+            <input name="venue" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Budget (₹)</label>
+            <input name="budget" type="number" class="form-control">
+          </div>
+          <div class="col-12">
+            <label class="form-label">Style / Vibe</label>
+            <input name="style" class="form-control" placeholder="e.g. candid, traditional, editorial">
+          </div>
+          <div class="col-12">
+            <label class="form-label">Message</label>
+            <textarea name="message" rows="3" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="mt-4">
+          <button class="btn btn-primary px-4">
+            <i class="bi bi-check2-circle"></i> Save Enquiry
+          </button>
+          <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

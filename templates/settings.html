@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <div class="card p-4">
+      <h3 class="mb-4"><i class="bi bi-gear"></i> Settings</h3>
+
+      <form method="POST">
+        <div class="mb-3">
+          <label class="form-label">Photographer Name</label>
+          <input name="photographer_name" class="form-control"
+                 value="{{ settings.photographer_name or '' }}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Starting Price</label>
+          <input name="starting_price" class="form-control"
+                 value="{{ settings.starting_price or '' }}"
+                 placeholder="e.g. ₹75,000 for a full-day wedding">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Sign-off</label>
+          <input name="signoff" class="form-control"
+                 value="{{ settings.signoff or '' }}"
+                 placeholder="e.g. Warm regards">
+        </div>
+        <button class="btn btn-primary px-4">
+          <i class="bi bi-check2-circle"></i> Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

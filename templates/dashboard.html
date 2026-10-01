@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row g-3 mb-4">
+  {% for stage, count in counts.items() %}
+  <div class="col-6 col-md">
+    <div class="card stat-card text-center p-3">
+      <div class="text-muted small text-uppercase">{{ stage }}</div>
+      <div class="fs-2 fw-bold" style="color:#4f46e5;">{{ count }}</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="card p-4">
+  <h3 class="mb-3"><i class="bi bi-inbox"></i> Enquiries</h3>
+
+  {% if leads %}
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Event Date</th>
+          <th>Venue</th>
+          <th>Budget</th>
+          <th>Temp</th>
+          <th>Stage</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for l in leads %}
+        <tr>
+          <td><strong>{{ l.name }}</strong></td>
+          <td>{{ l.event_date or '—' }}</td>
+          <td>{{ l.venue or '—' }}</td>
+          <td>{{ l.budget or '—' }}</td>
+          <td>
+            <span class="badge badge-{{ l.temperature|lower }}">{{ l.temperature }}</span>
+          </td>
+          <td><span class="badge bg-secondary">{{ l.stage }}</span></td>
+          <td class="text-end">
+            <a href="{{ url_for('view_lead', lead_id=l.id) }}" class="btn btn-sm btn-primary">
+              Open
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="text-muted">No enquiries yet. Click <strong>New Enquiry</strong> to add one.</p>
+  {% endif %}
+</div>
+
+{% endblock %}
